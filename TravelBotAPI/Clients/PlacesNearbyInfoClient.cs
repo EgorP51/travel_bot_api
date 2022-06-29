@@ -17,7 +17,7 @@ namespace TravelBotAPI.Clients
 				RequestUri = new Uri(url),
 				Headers =
 	            {
-		            { "X-RapidAPI-Key", Constant.apiKey },
+		            { "X-RapidAPI-Key", Constant.ApiKey },
 		            { "X-RapidAPI-Host", "trueway-places.p.rapidapi.com" },
 	            },
 			};
@@ -26,9 +26,6 @@ namespace TravelBotAPI.Clients
 			{
 				response.EnsureSuccessStatusCode();
 				var body = await response.Content.ReadAsStringAsync();
-				Console.ForegroundColor = ConsoleColor.Blue;
-				Console.WriteLine(body);
-				Console.ResetColor();
 				PlacesNearbyInfoModel placesNearbyInfoModel = JsonConvert.DeserializeObject<PlacesNearbyInfoModel>(body);
 				if(placesNearbyInfoModel.results != null)
                 {
@@ -36,13 +33,11 @@ namespace TravelBotAPI.Clients
                 }
                 else
                 {
-					Console.WriteLine("null1");
 					return null;
                 }
 			}
             else
 			{
-				Console.WriteLine("null2");
 				return null;
             }
 		}

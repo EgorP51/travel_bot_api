@@ -13,8 +13,14 @@ namespace TravelBotAPI.Controllers
         public HotelModel Hotel(string city, string checkin, string checkout, int adults)
         {
             HotelClient client = new HotelClient();
-            return client.GetHotelsAsync(city,checkin,checkout,adults).Result;
-
+            try
+            {
+                return client.GetHotelsAsync(city, checkin, checkout, adults).Result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

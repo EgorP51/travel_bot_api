@@ -26,7 +26,7 @@ namespace TravelBotAPI.Controllers
         }
 
         [HttpGet("get")]
-        public async Task<InfoFromDBModel> GetRoutesFromDB(string id = "783450273", string city = "London")
+        public async Task<InfoFromDBModel> GetRoutesFromDB(string id, string city)
         {
             var result = _dynamoDbClient.GetData(id, city);
             if (result == null)
@@ -49,41 +49,47 @@ namespace TravelBotAPI.Controllers
                 NewValue = infoFromDBModel.NewValue
             };
              var result = await _dynamoDbClient.PostData(data);
-            if(result == false)
+            if(result != "Ok")
             {
                 return BadRequest("Cannot insert value to database");
             }
-            return Ok("Value has successfully added to DB");
+            return Ok("Value has successfully added to database");
         }
 
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(string userId, string city)
         {
             var result = await _dynamoDbClient.DeleteData(userId,city);
-            if( result == false)
+            if( result != "Ok")
             {
                 return BadRequest("Cannot delete value to database");
             }
-            Console.WriteLine("Value has successfully delete DB");
-            return Ok("Value has successfully delete DB");
+            //Console.WriteLine("Value has successfully delete DB");
+            return Ok("Value has successfully delete database");
         }
 
         [HttpPut("addItem")]
         public async Task<IActionResult> UpdateADD([FromBody] PutBody putBody)
         {
-
             var result = await _dynamoDbClient.UpdateDataAddItem(putBody.UserId, putBody.City, putBody.NewRoute);
-
-            return Ok(result);
+            
+            if(result != "Ok")
+            {
+                return BadRequest("Cannot insert value to database");
+            }
+            return Ok("Item value successfully added to");
         }
 
         [HttpPut("deleteItem")]
         public async Task<IActionResult> UpdateDelete([FromBody] PutBody putBody)
         {
-
             var result = await _dynamoDbClient.UpdateDataDeleteItem(putBody.UserId, putBody.City, putBody.NewRoute);
-
-            return Ok(result);
+            
+            if (result != "Ok")
+            {
+                return BadRequest("Can't remove value from database");
+            }
+            return Ok("Item value successfully removed from database");
         }
     }
     public class PutBody
@@ -92,10 +98,4 @@ namespace TravelBotAPI.Controllers
         public string City { get; set; }
         public string NewRoute { get; set; }
     }
-    public class DeleteBody
-    {
-        public string UserId { get; set; }
-        public string City { get; set; }
-    }
-
 }

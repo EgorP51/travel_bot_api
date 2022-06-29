@@ -15,7 +15,14 @@ namespace TravelBotAPI.Controllers
         public SearchInfoModel Serch(string text)
         {
             SearchInfoClient searchInfoClient = new SearchInfoClient();
-            return searchInfoClient.GetCityInfoAsync(text).Result;
+            try
+            {
+                return searchInfoClient.GetCityInfoAsync(text).Result;
+
+            }catch (Exception ex)
+            {
+                return null;    
+            }
         }
     }
     

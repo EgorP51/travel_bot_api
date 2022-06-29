@@ -11,11 +11,11 @@ namespace TravelBotAPI.Clients
 {
     public class DynamoDbClient : IDynamoDbClient
     {
-        public string _tableName;
+        private string _tableName;
         private readonly IAmazonDynamoDB _dynamoDb;
         public DynamoDbClient(IAmazonDynamoDB dynamoDB)
         {
-            _tableName = Constant.tableName;
+            _tableName = Constant.TableName;
             _dynamoDb = dynamoDB;
         } 
         
@@ -90,7 +90,7 @@ namespace TravelBotAPI.Clients
 
 
         }
-        public async Task<bool> DeleteData(string userId, string city)
+        public async Task<string> DeleteData(string userId, string city)
         {
             var request = new DeleteItemRequest
             {
@@ -106,16 +106,15 @@ namespace TravelBotAPI.Clients
             try
             {
                 var response = _dynamoDb.DeleteItemAsync(request);
-                return true;
+                return "Ok";
+
             }catch (Exception ex)
             {
-                Console.WriteLine("Here is your error!\n" + ex);
-                return false;
+                return "Here is your error!\n" + ex;
             }
            
         }
        
-
         public async Task<InfoFromDBModel> GetData(string id, string city)
         {
             var item = new GetItemRequest
@@ -132,7 +131,7 @@ namespace TravelBotAPI.Clients
             return result;
         }
 
-        public async Task<bool> PostData(InfoFromDBModel dBModel)
+        public async Task<string> PostData(InfoFromDBModel dBModel)
         {
             var request = new PutItemRequest
             {
@@ -148,12 +147,11 @@ namespace TravelBotAPI.Clients
             try
             {
                 var response = await _dynamoDb.PutItemAsync(request);
-                return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+                return "Ok";
 
             }catch(Exception ex)
             {
-                Console.WriteLine("Here is your error!\n" + ex);
-                return false;
+                return "Here is your error!\n" + ex;
             }
         }
     }

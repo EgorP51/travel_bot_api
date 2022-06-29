@@ -6,7 +6,6 @@ namespace TravelBotAPI.Clients
 {
     public class WeatherClient
     {
-
         public async Task<WeatherModel> GetWeatherAsync(string city)
         {
             var client = new HttpClient();
@@ -17,7 +16,7 @@ namespace TravelBotAPI.Clients
                 Headers =
                 {
                     { "X-RapidAPI-Host", "yahoo-weather5.p.rapidapi.com" },
-                    { "X-RapidAPI-Key", Constant.apiKey },
+                    { "X-RapidAPI-Key", Constant.ApiKey },
                 },
             };
             var response = await client.SendAsync(request);

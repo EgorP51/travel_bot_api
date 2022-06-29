@@ -13,8 +13,14 @@ namespace TravelBotAPI.Controllers
         public WeatherModel Weather(string city)
         {
             WeatherClient weatherClient = new WeatherClient();
-            return weatherClient.GetWeatherAsync(city).Result;
-            Console.WriteLine();
+            try
+            {
+                return weatherClient.GetWeatherAsync(city).Result;
+
+            }catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
    

@@ -12,7 +12,14 @@ namespace TravelBotAPI.Controllers
         public PlacesNearbyInfoModel PlaceNeary(string lat, string lng, string type)
         {
             PlacesNearbyInfoClient placesNearbyInfoClient = new PlacesNearbyInfoClient();
-            return placesNearbyInfoClient.GetInfoAsync(lat, lng, type).Result;
+            try
+            {
+                return placesNearbyInfoClient.GetInfoAsync(lat, lng, type).Result;
+
+            }catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

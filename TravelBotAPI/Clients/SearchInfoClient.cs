@@ -6,21 +6,16 @@ namespace TravelBotAPI.Clients
 {
     public class SearchInfoClient
     {
-        public SearchInfoClient()
-        {
-
-        }
-
         public async Task<SearchInfoModel> GetCityInfoAsync(string city)
         {
             var client = new HttpClient(); // Wiki
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://wiki-briefs.p.rapidapi.com/search?q={city}&topk=3"),// temp
+                RequestUri = new Uri($"https://wiki-briefs.p.rapidapi.com/search?q={city}&topk=3"),
                 Headers =
                 {
-                    { "X-RapidAPI-Key", Constant.apiKey },
+                    { "X-RapidAPI-Key", Constant.ApiKey },
                     { "X-RapidAPI-Host", "wiki-briefs.p.rapidapi.com" },
                 },
             };
