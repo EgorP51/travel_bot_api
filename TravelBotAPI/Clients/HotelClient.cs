@@ -19,7 +19,6 @@ namespace TravelBotAPI.Clients
                 Headers =
                 {
                     { "X-RapidAPI-Key", Constant.ApiKey },
-                    { "X-RapidAPI-Host", "airbnb13.p.rapidapi.com" },
                 },
             };
             var response = await client.SendAsync(request);
