@@ -1,2 +1,7 @@
 .vs
 .vs/TravelBotAPI
+TravelBotAPI.csproj.user
+obj
+bin
+appsettings.Development.json
+appsettings.json
