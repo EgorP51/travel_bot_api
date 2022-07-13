@@ -13,7 +13,6 @@
         public string bathrooms { get; set; }
         public int bedrooms { get; set; }
         public int beds { get; set; }
-        public string neighborhood { get; set; }
         public string[] images { get; set; }
         public string hostThumbnail { get; set; }
         public string lat { get; set; }

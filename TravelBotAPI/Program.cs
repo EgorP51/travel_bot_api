@@ -29,7 +29,7 @@ var config = new AmazonDynamoDBConfig()
 var client = new AmazonDynamoDBClient(credentials, config);
 builder.Services.AddSingleton<IAmazonDynamoDB>(client);
 builder.Services.AddSingleton<IDynamoDbClient, DynamoDbClient>();
-builder.Services.AddSingleton<IDynamoDBContext,DynamoDBContext>();
+builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
 
 
 var app = builder.Build();
