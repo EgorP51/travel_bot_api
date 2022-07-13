@@ -1,6 +1,3 @@
-#Travel bot api
---
-=======
 # Travel api
 ---
 ### *The API was created for travel services*
