@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Travel bot api
 --
 =======
