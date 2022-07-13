@@ -11,14 +11,14 @@ namespace TravelBotAPI.Clients
         {
 			string url = $"https://trueway-places.p.rapidapi.com/FindPlacesNearby?location={lat}%2C{lng}&type={type}&radius=10000&language=en";
 			var client = new HttpClient();
+			// Create GetItem request
 			var request = new HttpRequestMessage
 			{
 				Method = HttpMethod.Get,
 				RequestUri = new Uri(url),
 				Headers =
 	            {
-		            { "X-RapidAPI-Key", Constant.ApiKey },
-		            { "X-RapidAPI-Host", "trueway-places.p.rapidapi.com" },
+		            { "X-RapidAPI-Key", Constant.ApiKey }
 	            },
 			};
 			var response = await client.SendAsync(request);

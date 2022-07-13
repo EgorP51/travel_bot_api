@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TravelBotAPI.Models;
 using TravelBotAPI.Clients;
-using Amazon.DynamoDBv2.DataModel;
 
 namespace TravelBotAPI.Controllers
 {

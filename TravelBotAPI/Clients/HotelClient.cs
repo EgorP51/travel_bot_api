@@ -10,8 +10,9 @@ namespace TravelBotAPI.Clients
         public async Task<HotelModel> GetHotelsAsync(string city,string checkin,string checkout,int adults)
         {
             string uri = $"https://airbnb13.p.rapidapi.com/search-location?location={city}&checkin={checkin}&checkout={checkout}&adults={adults.ToString()}&children=0&infants=0&page=1";
-            //Console.WriteLine(uri);
+            
             var client = new HttpClient();
+            // Create GetItem request
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,

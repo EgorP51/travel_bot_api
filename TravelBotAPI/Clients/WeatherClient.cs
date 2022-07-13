@@ -12,10 +12,9 @@ namespace TravelBotAPI.Clients
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://yahoo-weather5.p.rapidapi.com/weather?location={city}&format=json&u=c"),
+                RequestUri = new Uri($"https://yahoo-weather5.p.rapidapi.com/weather?location={city}&format=json&u=c"),//It is possible to change the weather unit, in my case it is Celsius
                 Headers =
                 {
-                    { "X-RapidAPI-Host", "yahoo-weather5.p.rapidapi.com" },
                     { "X-RapidAPI-Key", Constant.ApiKey },
                 },
             };

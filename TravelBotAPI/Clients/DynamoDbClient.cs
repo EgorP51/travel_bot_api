@@ -4,8 +4,6 @@ using TravelBotAPI.Clients;
 using TravelBotAPI.Constants;
 using TravelBotAPI.Extensions;
 using TravelBotAPI.Models;
-using TravelBotAPI.Clients;
-using Amazon.Runtime;
 
 namespace TravelBotAPI.Clients
 {
@@ -63,14 +61,15 @@ namespace TravelBotAPI.Clients
                 { "UserId", new AttributeValue { S = userId } },
                 { "City", new AttributeValue { S = city } }
             };
-
+            // Define attribute updates
             Dictionary<string, AttributeValueUpdate> updates = new Dictionary<string, AttributeValueUpdate>();
+            // Update item's Setting attribute
             updates["NewValue"] = new AttributeValueUpdate()
             {
                 Action = AttributeAction.DELETE,
                 Value = new AttributeValue { SS = new List<string> { newRoute } }
             };
-
+            // Create UpdateItem request
             UpdateItemRequest request = new UpdateItemRequest
             {
                 TableName = _tableName,
@@ -87,11 +86,10 @@ namespace TravelBotAPI.Clients
             {
                 return "Here is your error!\n" + ex;
             }
-
-
         }
         public async Task<string> DeleteData(string userId, string city)
         {
+            // Create DeleteItem request
             var request = new DeleteItemRequest
             {
                 TableName = _tableName,
@@ -100,7 +98,6 @@ namespace TravelBotAPI.Clients
                     { "UserId", new AttributeValue { S = userId } },
                     {"City", new AttributeValue{ S = city } }
                 },
-
             };
             
             try
@@ -133,6 +130,7 @@ namespace TravelBotAPI.Clients
 
         public async Task<string> PostData(InfoFromDBModel dBModel)
         {
+            // Create PutItem request
             var request = new PutItemRequest
             {
                 TableName = _tableName,

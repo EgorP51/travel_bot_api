@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TravelBotAPI.Models;
 using TravelBotAPI.Clients;
-using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.Model;
-using Amazon.DynamoDBv2;
-using TravelBotAPI.Constants;
-using TravelBotAPI.Extensions;
-using TravelBotAPI.Clients;
 
 namespace TravelBotAPI.Controllers
 {
@@ -92,10 +86,5 @@ namespace TravelBotAPI.Controllers
             return Ok("Item value successfully removed from database");
         }
     }
-    public class PutBody
-    {
-        public string UserId { get; set; }
-        public string City { get; set; }
-        public string NewRoute { get; set; }
-    }
+   
 }

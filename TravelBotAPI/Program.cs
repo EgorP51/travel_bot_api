@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 
 
 
-
+//connection to db
 var credentials = new BasicAWSCredentials(Constant.AccessKeyDB, Constant.SecretAccessKeyDB);
 var config = new AmazonDynamoDBConfig()
 {

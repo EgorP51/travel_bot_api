@@ -2,6 +2,7 @@
 {
     public class Constant
     {
+        //using environment variables
         public static readonly string ApiKey = Environment.GetEnvironmentVariable("ApiKey");
         public static readonly string TableName = Environment.GetEnvironmentVariable("TableName");
         public static readonly string AccessKeyDB = Environment.GetEnvironmentVariable("AccessKeyDB");
