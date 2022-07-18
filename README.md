@@ -39,6 +39,8 @@
 The method accepts the City parameter
 City|Rome
 ---|---
+
+
 Example of a returned request for the ***GET*** information retrieval method:
 
 ```json
@@ -57,6 +59,8 @@ Example of a returned request for the ***GET*** information retrieval method:
 The method accepts the City parameter
 City|Rome
 ---|---
+
+
 Example of a returned query for the ***GET*** weather search method:
 ```json
 {
