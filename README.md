@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-#Travel bot api
---
-=======
 # Travel api
 ---
 ### *The API was created for travel services*
->Initially, the API was developed to work with the telegram bot. Click [here](https://t.me/AbungaBangaBot) to go to the bot. You can view the bot project on [GitHub](https://github.com/EgorP51/travel_bot).
+>Initially, the API was developed to work with the telegram bot.You can view the bot project on [GitHub](https://github.com/EgorP51/travel_bot).
 
 ## Used in project
 - Connecting to public APIs 
@@ -43,6 +39,8 @@
 The method accepts the City parameter
 City|Rome
 ---|---
+
+
 Example of a returned request for the ***GET*** information retrieval method:
 
 ```json
@@ -61,6 +59,8 @@ Example of a returned request for the ***GET*** information retrieval method:
 The method accepts the City parameter
 City|Rome
 ---|---
+
+
 Example of a returned query for the ***GET*** weather search method:
 ```json
 {
@@ -365,5 +365,3 @@ UserId | 783450274
 ---|---
 City | Rome
 ---
-
->>>>>>> 858b08d9948b5c831fa75a4d5c82e173431040c3
