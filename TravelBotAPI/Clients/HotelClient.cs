@@ -6,10 +6,11 @@ namespace TravelBotAPI.Clients
 {
     public class HotelClient
     {
-        private string city;
-        public async Task<HotelModel> GetHotelsAsync(string city,string checkin,string checkout,int adults)
+        public async Task<HotelModel?> GetHotelsAsync(string city,string checkin,string checkout,int adults)
         {
-            string uri = $"https://airbnb13.p.rapidapi.com/search-location?location={city}&checkin={checkin}&checkout={checkout}&adults={adults.ToString()}&children=0&infants=0&page=1";
+            string uri = $"https://airbnb13.p.rapidapi.com/search-location?location=" +
+                         $"{city}&checkin={checkin}&checkout={checkout}&adults={adults.ToString()}&" +
+                         $"children=0&infants=0&page=1";
             
             var client = new HttpClient();
             // Create GetItem request
@@ -23,19 +24,14 @@ namespace TravelBotAPI.Clients
                 },
             };
             var response = await client.SendAsync(request);
+
             if (response.IsSuccessStatusCode)
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
                 HotelModel hotelModel = JsonConvert.DeserializeObject<HotelModel>(body);
-                if(hotelModel.results != null)
-                {
-                    return hotelModel;
-                }
-                else
-                {
-                    return null;
-                }
+
+                return  hotelModel.results != null? hotelModel: null;
             }
             else
             {

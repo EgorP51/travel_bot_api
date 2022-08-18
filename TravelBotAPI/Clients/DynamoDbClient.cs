@@ -108,7 +108,6 @@ namespace TravelBotAPI.Clients
             }
            
         }
-       
         public async Task<InfoFromDBModel> GetData(string id, string city)
         {
             var item = new GetItemRequest
@@ -120,6 +119,7 @@ namespace TravelBotAPI.Clients
                     {"City", new AttributeValue{S = city}}
                 }
             };
+
             var response = await _dynamoDb.GetItemAsync(item);
             var result = response.Item.ToClass<InfoFromDBModel>();
             return result;

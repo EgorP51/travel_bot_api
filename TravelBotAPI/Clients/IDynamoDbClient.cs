@@ -1,5 +1,4 @@
-﻿using Amazon.DynamoDBv2;
-using TravelBotAPI.Models;
+﻿using TravelBotAPI.Models;
 namespace TravelBotAPI.Clients
 {
     public interface IDynamoDbClient

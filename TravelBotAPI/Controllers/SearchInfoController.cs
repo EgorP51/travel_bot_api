@@ -11,7 +11,7 @@ namespace TravelBotAPI.Controllers
     {
 
         [HttpGet(Name = "SerchInfoCity")]
-        public SearchInfoModel Serch(string text)
+        public SearchInfoModel? Serch(string text)
         {
             SearchInfoClient searchInfoClient = new SearchInfoClient();
             try
@@ -20,6 +20,7 @@ namespace TravelBotAPI.Controllers
 
             }catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return null;    
             }
         }

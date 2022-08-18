@@ -10,7 +10,7 @@ namespace TravelBotAPI.Controllers
     public class WeatherControler : ControllerBase
     {
         [HttpGet(Name = "WeatherCity")]
-        public WeatherModel Weather(string city)
+        public WeatherModel? Weather(string city)
         {
             WeatherClient weatherClient = new WeatherClient();
             try
@@ -19,6 +19,7 @@ namespace TravelBotAPI.Controllers
 
             }catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return null;
             }
         }

@@ -10,7 +10,7 @@ namespace TravelBotAPI.Controllers
     public class CityHotelController : ControllerBase
     {
         [HttpGet(Name = "CityHotel")]
-        public HotelModel Hotel(string city, string checkin, string checkout, int adults)
+        public HotelModel? Hotel(string city, string checkin, string checkout, int adults)
         {
             HotelClient client = new HotelClient();
             try
@@ -19,6 +19,7 @@ namespace TravelBotAPI.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return null;
             }
         }

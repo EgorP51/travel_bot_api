@@ -9,7 +9,7 @@ namespace TravelBotAPI.Controllers
     public class PlaceNearyController : ControllerBase
     {
         [HttpGet(Name = "PlaceNearyCity")]
-        public PlacesNearbyInfoModel PlaceNeary(string lat, string lng, string type)
+        public PlacesNearbyInfoModel? PlaceNeary(string lat, string lng, string type)
         {
             PlacesNearbyInfoClient placesNearbyInfoClient = new PlacesNearbyInfoClient();
             try
@@ -18,6 +18,7 @@ namespace TravelBotAPI.Controllers
 
             }catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return null;
             }
         }
