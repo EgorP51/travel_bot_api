@@ -141,7 +141,7 @@ namespace TravelBotAPI.Clients
 
             try
             {
-                var response = await _dynamoDb.PutItemAsync(request);
+                await _dynamoDb.PutItemAsync(request);
                 return "Ok";
 
             }catch(Exception ex)
