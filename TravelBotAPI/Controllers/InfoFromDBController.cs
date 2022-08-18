@@ -65,7 +65,7 @@ namespace TravelBotAPI.Controllers
         [HttpPut("addItem")]
         public async Task<IActionResult> UpdateADD([FromBody] PutBody putBody)
         {
-            var result = await _dynamoDbClient.UpdateDataAddItem(putBody.UserId, putBody.City, putBody.NewRoute);
+            var result = await _dynamoDbClient.AddItem(putBody.UserId, putBody.City, putBody.NewRoute);
             
             if(result != "Ok")
             {
@@ -77,7 +77,7 @@ namespace TravelBotAPI.Controllers
         [HttpPut("deleteItem")]
         public async Task<IActionResult> UpdateDelete([FromBody] PutBody putBody)
         {
-            var result = await _dynamoDbClient.UpdateDataDeleteItem(putBody.UserId, putBody.City, putBody.NewRoute);
+            var result = await _dynamoDbClient.DeleteItem(putBody.UserId, putBody.City, putBody.NewRoute);
             
             if (result != "Ok")
             {

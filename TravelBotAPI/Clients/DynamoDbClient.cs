@@ -1,6 +1,5 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
-using TravelBotAPI.Clients;
 using TravelBotAPI.Constants;
 using TravelBotAPI.Extensions;
 using TravelBotAPI.Models;
@@ -17,7 +16,7 @@ namespace TravelBotAPI.Clients
             _dynamoDb = dynamoDB;
         } 
         
-        public async Task<string> UpdateDataAddItem(string userId, string city,string newRoute)
+        public async Task<string> AddItem(string userId, string city,string newRoute)
         {
             Dictionary<string, AttributeValue> key = new Dictionary<string, AttributeValue>
             {
@@ -51,10 +50,8 @@ namespace TravelBotAPI.Clients
             {
                 return "Here is your error!\n" + ex;
             }
-
-
         }
-        public async Task<string> UpdateDataDeleteItem(string userId, string city, string newRoute)
+        public async Task<string> DeleteItem(string userId, string city, string newRoute)
         {
             Dictionary<string, AttributeValue> key = new Dictionary<string, AttributeValue>
             {
