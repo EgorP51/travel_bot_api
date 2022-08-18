@@ -16,7 +16,7 @@ namespace TravelBotAPI.Clients
             _dynamoDb = dynamoDB;
         } 
         
-        public async Task<string> AddItem(string userId, string city,string newRoute)
+        public async Task<string> AddItemAsync(string userId, string city,string newRoute)
         {
             Dictionary<string, AttributeValue> key = new Dictionary<string, AttributeValue>
             {
@@ -51,7 +51,7 @@ namespace TravelBotAPI.Clients
                 return "Here is your error!\n" + ex;
             }
         }
-        public async Task<string> DeleteItem(string userId, string city, string newRoute)
+        public async Task<string> DeleteItemAsync(string userId, string city, string newRoute)
         {
             Dictionary<string, AttributeValue> key = new Dictionary<string, AttributeValue>
             {
@@ -84,7 +84,7 @@ namespace TravelBotAPI.Clients
                 return "Here is your error!\n" + ex;
             }
         }
-        public async Task<string> DeleteData(string userId, string city)
+        public async Task<string> DeleteDataAsync(string userId, string city)
         {
             // Create DeleteItem request
             var request = new DeleteItemRequest
@@ -99,7 +99,7 @@ namespace TravelBotAPI.Clients
             
             try
             {
-                var response = _dynamoDb.DeleteItemAsync(request);
+                await _dynamoDb.DeleteItemAsync(request);
                 return "Ok";
 
             }catch (Exception ex)
@@ -108,7 +108,7 @@ namespace TravelBotAPI.Clients
             }
            
         }
-        public async Task<InfoFromDBModel> GetData(string id, string city)
+        public async Task<InfoFromDBModel> GetDataAsync(string id, string city)
         {
             var item = new GetItemRequest
             {
@@ -125,7 +125,7 @@ namespace TravelBotAPI.Clients
             return result;
         }
 
-        public async Task<string> PostData(InfoFromDBModel dBModel)
+        public async Task<string> PostDataAsync(InfoFromDBModel dBModel)
         {
             // Create PutItem request
             var request = new PutItemRequest

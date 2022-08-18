@@ -22,7 +22,7 @@ namespace TravelBotAPI.Controllers
         [HttpGet("get")]
         public async Task<InfoFromDBModel?> GetRoutesFromDB(string id, string city)
         {
-            var result = _dynamoDbClient.GetData(id, city);
+            var result = _dynamoDbClient.GetDataAsync(id, city);
 
             return result == null ? null : await result;
         }
@@ -36,7 +36,7 @@ namespace TravelBotAPI.Controllers
                 UserId = infoFromDBModel.UserId,
                 NewValue = infoFromDBModel.NewValue
             };
-            var result = await _dynamoDbClient.PostData(data);
+            var result = await _dynamoDbClient.PostDataAsync(data);
 
             if (result != "Ok")
                 return BadRequest("Cannot insert value to database");
@@ -47,7 +47,7 @@ namespace TravelBotAPI.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(string userId, string city)
         {
-            var result = await _dynamoDbClient.DeleteData(userId, city);
+            var result = await _dynamoDbClient.DeleteDataAsync(userId, city);
             
             if (result != "Ok")
                 return BadRequest("Cannot delete value to database");
@@ -58,7 +58,7 @@ namespace TravelBotAPI.Controllers
         [HttpPut("addItem")]
         public async Task<IActionResult> UpdateADD([FromBody] PutBody putBody)
         {
-            var result = await _dynamoDbClient.AddItem(putBody.UserId, putBody.City, putBody.NewRoute);
+            var result = await _dynamoDbClient.AddItemAsync(putBody.UserId, putBody.City, putBody.NewRoute);
 
             if (result != "Ok")
                 return BadRequest("Cannot insert value to database");
@@ -69,7 +69,7 @@ namespace TravelBotAPI.Controllers
         [HttpPut("deleteItem")]
         public async Task<IActionResult> UpdateDelete([FromBody] PutBody putBody)
         {
-            var result = await _dynamoDbClient.DeleteItem(putBody.UserId, putBody.City, putBody.NewRoute);
+            var result = await _dynamoDbClient.DeleteItemAsync(putBody.UserId, putBody.City, putBody.NewRoute);
 
             if (result != "Ok")
                 return BadRequest("Can't remove value from database");
